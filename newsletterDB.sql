@@ -116,3 +116,8 @@ select articles.title, concat_ws(': ', users.name, comments.content) as comments
 join comments on comments.article_id=articles.id
 join users on comments.user_id=users.id 
 where articles.id = 2;
+            
+select articles.title, urls.url
+from articles
+join urls on urls.id in(
+select articles_urls.url_id from articles_urls where articles_urls.article_id=articles.id);            
